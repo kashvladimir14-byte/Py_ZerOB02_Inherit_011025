@@ -27,8 +27,6 @@ class User:
         else:
             print('Имя не может быть пустым')
 
-
-# class Admin(User):
 class Admin(User):
     def __init__(self, user_id, name, access_level, admin_access_level):
         super().__init__(user_id, name, access_level)
@@ -44,6 +42,7 @@ class Admin(User):
         else:
             print('Ошибка: Можно добавить только экземпляр класса User')
 
+
     def remove_user(self, user_id):  # метод для удаления пользователя из списка
         for user in self.__user_list:
             if user.get_user_id() == user_id:
@@ -52,28 +51,29 @@ class Admin(User):
                 return
         print(f"Пользователь с ID {user_id} не найден.")
 
-        def list_users(self):
-            for user in self.__user_list:
-                print('ID:', user.get_user_id())
-                print('Имя:', user.get_name())
-                print('Уровень доступа:', user.get_access_level())
-                print('--------------------------------')
+    def list_users(self):
+        for user in self.__user_list:
+            print('ID:', user.get_user_id())
+            print('Имя:', user.get_name())
+            print('Уровень доступа:', user.get_access_level())
+            print('--------------------------------')
 
-    if __name__ == '__main__':
+if __name__ == '__main__':
 
-        user1 = User(1, 'Иван', 1)
-        user2 = User(2, 'Петр', 1)
-        user3 = User(3, 'Сидор', 1)
+    user1 = User(1, 'Иван', 1)
+    user2 = User(2, 'Петр', 1)
+    user3 = User(3, 'Сидор', 1)
 
-       # admin1 = Admin
-        admin1=Admin(1, 'Иван', 2, 1)
-        admin1.add_user(user1)
-        admin1.add_user(user2)
-        admin1.add_user(user3)
+    admin1 = Admin(100, 'Админ', 2, 2)
 
-        admin1.list_users()
+    admin1.add_user(user1)
+    admin1.add_user(user2)
+    admin1.add_user(user3)
 
-        admin1.remove_user(user_id=2)
+    admin1.list_users()
 
-        admin1.list_users()
+    admin1.remove_user(user_id=2)
+
+    admin1.list_users()
+
 
